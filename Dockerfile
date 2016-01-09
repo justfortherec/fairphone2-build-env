@@ -35,7 +35,8 @@ RUN mkdir -p /var/fairphone_os/
 WORKDIR /var/fairphone_os/
 
 # Build!
-# The default command for `docker run <this-image>` is to build as specified in thread
+# The default command for `docker run fairphone2-build-env` is to build as
+# specified in thread
 # https://forum.fairphone.com/t/compiling-fairphone-open-source/11600
 # which is based on instructions from
 # http://code.fairphone.com/projects/fp-osos/dev/fairphone-os-build-instructions.html
@@ -53,7 +54,7 @@ CMD ["/bin/bash", "-c", \
          && choosecombo 1 FP2 2 \
          && make -j8"]
 
-# Other commands can be executed with `docker run <this-image> <command>` or
+# Other commands can be executed with `docker run fairphone2-build-env <command>` or
 # you can work in an interactive shell with
 # `docker run -i -t <this-image> /bin/bash`
 
