@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y -f --no-install-recommends \
     python-networkx \
     zlib1g-dev:i386 \
     zip \
+    unzip \
     curl \
     wget \
     ca-certificates \
