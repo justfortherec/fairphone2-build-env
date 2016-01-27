@@ -46,7 +46,7 @@ CMD ["/bin/bash", "-c", \
               -u http://code.fairphone.com/gerrit/fp2-dev/manifest \
               -b fp2-sibon \
          && repo sync -c \
-         && wget -c http://code.fairphone.com/downloads/FP2/blobs/fp2-sibon-2.0.0-blobs.tgz \
+	 && wget -c http://code.fairphone.com/downloads/FP2/blobs/fp2-sibon-2.0.1-blobs.tgz \
          && tar zxvf fp2-sibon-2.0.0-blobs.tgz \
          && yes | sh fp2-sibon-2.0.0-blobs.sh \
          && source build/envsetup.sh \
