@@ -47,8 +47,8 @@ CMD ["/bin/bash", "-c", \
               -b fp2-sibon \
          && repo sync -c \
 	 && wget -c http://code.fairphone.com/downloads/FP2/blobs/fp2-sibon-2.0.1-blobs.tgz \
-         && tar zxvf fp2-sibon-2.0.0-blobs.tgz \
-         && yes | sh fp2-sibon-2.0.0-blobs.sh \
+         && tar zxvf fp2-sibon-2.0.1-blobs.tgz \
+         && yes | sh fp2-sibon-2.0.1-blobs.sh \
          && source build/envsetup.sh \
          && cp -v vendor/qcom/proprietary/target/product/FP2/obj/lib/*.so \
                 ./vendor/qcom/proprietary/target/product/FP2/system/vendor/lib/ \
