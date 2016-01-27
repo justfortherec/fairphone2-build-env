@@ -35,27 +35,12 @@ ENV PATH /usr/local/repo/bin:$PATH
 RUN mkdir -p /var/fairphone_os/
 WORKDIR /var/fairphone_os/
 
-# Build!
-# The default command for `docker run fairphone2-build-env` is to build as
-# specified in thread
-# https://forum.fairphone.com/t/compiling-fairphone-open-source/11600
-# which is based on instructions from
-# http://code.fairphone.com/projects/fp-osos/dev/fairphone-os-build-instructions.html
-CMD ["/bin/bash", "-c", \
-        "repo init --depth=1 \
-              -u http://code.fairphone.com/gerrit/fp2-dev/manifest \
-              -b fp2-sibon \
-         && repo sync -c \
-	 && wget -c http://code.fairphone.com/downloads/FP2/blobs/fp2-sibon-2.0.1-blobs.tgz \
-         && tar zxvf fp2-sibon-2.0.1-blobs.tgz \
-         && yes | sh fp2-sibon-2.0.1-blobs.sh \
-         && source build/envsetup.sh \
-         && cp -v vendor/qcom/proprietary/target/product/FP2/obj/lib/*.so \
-                ./vendor/qcom/proprietary/target/product/FP2/system/vendor/lib/ \
-         && choosecombo 1 FP2 2 \
-         && make -j8"]
+RUN mkdir -p /var/fairphone_deps/
+ADD get_and_build.sh /var/fairphone_deps/
 
-# Other commands can be executed with `docker run fairphone2-build-env <command>` or
+CMD ["/bin/bash", "/var/fairphone_deps/get_and_build.sh"]
+
+# Other commands can be executed with `docker run jftr/fairphone2-build-env <command>` or
 # you can work in an interactive shell with
-# `docker run -i -t <this-image> /bin/bash`
+# `docker run -i -t jftr/fairphone2-build-env /bin/bash`
 
