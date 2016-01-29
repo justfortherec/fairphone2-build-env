@@ -15,7 +15,5 @@ repo init --depth=1 \
 && tar zxvf fp2-sibon-2.0.1-blobs.tgz  \
 && yes | sh fp2-sibon-2.0.1-blobs.sh  \
 && source build/envsetup.sh  \
-&& cp -v vendor/qcom/proprietary/target/product/FP2/obj/lib/*.so  \
- 	./vendor/qcom/proprietary/target/product/FP2/system/vendor/lib/  \
 && choosecombo 1 FP2 2  \
 && make -j8
