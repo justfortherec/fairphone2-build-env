@@ -52,4 +52,4 @@ Use your host to [flash the image](http://code.fairphone.com/projects/fp-osos/de
 ### Known issues
 
  * Building the docker image may fail in some configurations when installing `openjdk`. This seems to be [due to a kernel bug](https://github.com/docker/docker/issues/18180#issuecomment-162866404).
-
+ * The build may get stuck on Java zombie processes, this can be [solved](https://github.com/docker/docker/issues/18502#issuecomment-170958935) by [switching Docker](http://stackoverflow.com/questions/20810555) to the `devicemapper` storage backend.
