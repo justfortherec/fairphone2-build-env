@@ -7,13 +7,21 @@
 # which is based on instructions from
 # http://code.fairphone.com/projects/fp-osos/dev/fairphone-os-build-instructions.html
 
-repo init --depth=1 \
-              -u http://code.fairphone.com/gerrit/fp2-dev/manifest \
-              -b fp2-sibon \
-&& repo sync -c  \
-&& wget -c http://code.fairphone.com/downloads/FP2/blobs/fp2-sibon-2.0.1-blobs.tgz  \
-&& tar zxvf fp2-sibon-2.0.1-blobs.tgz  \
-&& yes | sh fp2-sibon-2.0.1-blobs.sh  \
-&& source build/envsetup.sh  \
-&& choosecombo 1 FP2 2  \
-&& make -j8
+BLOBS_VERSION="2.0.1"
+
+# Initialize repo if it doesn't exist yet
+repo > /dev/null || repo init --depth=1 \
+	      -u http://code.fairphone.com/gerrit/fp2-dev/manifest \
+	      -b fp2-sibon
+repo sync -c
+
+# Download and extract blobs
+curl http://code.fairphone.com/downloads/FP2/blobs/fp2-sibon-${BLOBS_VERSION}-blobs.tgz \
+		-C - -O \
+	&& tar zxvf fp2-sibon-${BLOBS_VERSION}-blobs.tgz  \
+	&& yes | sh fp2-sibon-${BLOBS_VERSION}-blobs.sh
+
+# Build
+source build/envsetup.sh
+choosecombo 1 FP2 2
+make -j8
