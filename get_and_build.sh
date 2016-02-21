@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build!
-# The default command for `docker run fairphone2-build-env` is to build as
+# The default command for `docker run jftr/fairphone2-build-env` is to build as
 # specified in thread
 # https://forum.fairphone.com/t/compiling-fairphone-open-source/11600
 # which is based on instructions from
