@@ -2,24 +2,32 @@ FROM ubuntu:14.04
 
 MAINTAINER docker@jftr.de
 
-# Add 32bit architechture to enable 32bit crosscompilation
-RUN dpkg --add-architecture i386
-
 # Prepare the Build Environment
-RUN apt-get update && apt-get install -y -f --no-install-recommends \
+RUN apt-get update \
+ && apt-get install -y \
     openjdk-7-jdk \
+    git-core \
+    gnupg \
+    flex \
     bison \
-    g++-multilib \
-    git \
     gperf \
+    build-essential \
+    zip \
+    curl \
+    zlib1g-dev \
+    gcc-multilib \
+    g++-multilib \
+    libc6-dev-i386 \
+    lib32ncurses5-dev \
+    x11proto-core-dev \
+    libx11-dev \
+    lib32z-dev \
+    libgl1-mesa-dev \
     libxml2-utils \
+    xsltproc \
+    unzip \
     make \
     python-networkx \
-    zlib1g-dev:i386 \
-    zip \
-    unzip \
-    curl \
-    wget \
     ca-certificates \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
