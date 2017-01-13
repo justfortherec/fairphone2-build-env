@@ -18,8 +18,9 @@ repo sync -c
 
 # Download and extract blobs
 curl http://code.fairphone.com/downloads/FP2/blobs/${BLOBS_ARCHIVE} -C - -O \
+	&& BLOBS_SCRIPT=`tar ztf ${BLOBS_ARCHIVE}`
 	&& tar zxvf ${BLOBS_ARCHIVE} \
-	&& yes | sh fp2-sibon-${BLOBS_VERSION}-blobs.sh
+	&& yes | sh ${BLOBS_SCRIPT}
 
 # Build
 source build/envsetup.sh
