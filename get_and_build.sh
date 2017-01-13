@@ -7,7 +7,7 @@
 # which is based on instructions from
 # http://code.fairphone.com/projects/fp-osos/dev/fairphone-os-build-instructions.html
 
-BLOBS_VERSION="2.0.1"
+BLOBS_VERSION="16.12.0"
 
 # Initialize repo if it doesn't exist yet
 repo > /dev/null || repo init --depth=1 \
