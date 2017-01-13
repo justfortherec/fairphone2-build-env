@@ -8,6 +8,7 @@
 # http://code.fairphone.com/projects/fp-osos/dev/fairphone-os-build-instructions.html
 
 BLOBS_VERSION="16.12.0"
+BLOBS_ARCHIVE="fp2-sibon-${BLOBS_VERSION}-blobs.tgz"
 
 # Initialize repo if it doesn't exist yet
 repo > /dev/null || repo init --depth=1 \
@@ -16,9 +17,8 @@ repo > /dev/null || repo init --depth=1 \
 repo sync -c
 
 # Download and extract blobs
-curl http://code.fairphone.com/downloads/FP2/blobs/fp2-sibon-${BLOBS_VERSION}-blobs.tgz \
-		-C - -O \
-	&& tar zxvf fp2-sibon-${BLOBS_VERSION}-blobs.tgz  \
+curl http://code.fairphone.com/downloads/FP2/blobs/${BLOBS_ARCHIVE} -C - -O \
+	&& tar zxvf ${BLOBS_ARCHIVE} \
 	&& yes | sh fp2-sibon-${BLOBS_VERSION}-blobs.sh
 
 # Build
