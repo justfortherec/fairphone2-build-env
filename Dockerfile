@@ -38,6 +38,7 @@ RUN mkdir -p /usr/local/repo/bin \
     /usr/local/repo/bin/repo \
  && chmod +x /usr/local/repo/bin/repo
 ENV PATH /usr/local/repo/bin:$PATH
+ENV GERRIT_USER
 
 # Create working directory
 RUN mkdir -p /var/fairphone_os/
@@ -45,6 +46,8 @@ WORKDIR /var/fairphone_os/
 
 RUN mkdir -p /var/fairphone_deps/
 ADD get_and_build.sh /var/fairphone_deps/
+RUN git config --global user.name = $GERRIT_USER
+
 
 CMD ["/bin/bash", "/var/fairphone_deps/get_and_build.sh"]
 
